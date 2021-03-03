@@ -1,8 +1,7 @@
-// Dependencies
 
 // Requiring our models
-var db = require("../models");
-
+const db = require("../models");
+const express = require("express");
 // Routes
 module.exports = function(app) {
 
@@ -13,16 +12,14 @@ module.exports = function(app) {
   });
 
   app.post("/api/workouts", function(req, res) {
-    db.Workout.create({
-      text: req.body.text,
-      complete: req.body.complete
-    }).then(function(dbWorkout) {
+    db.Workout.create({})
+    .then(function(dbWorkout) {
       res.json(dbWorkout);
     });
   });
 
 
-  app.put("/api/workouts", function(req, res) {
+  app.put("/api/workouts:id", function(req, res) {
     db.Workout.updateOne({
       text: req.body.text,
       complete: req.body.complete
@@ -36,3 +33,5 @@ module.exports = function(app) {
   });
 
 };
+
+// find id 

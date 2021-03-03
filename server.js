@@ -17,7 +17,7 @@ app.use(express.static("public"));
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 
-mongoose.connect(process.env.MONGOOSE_URL || "mongodb://localhost:27017/workout",{useNewUrlParser: true}).then(function() {
+mongoose.connect(process.env.MONGOOSE_URL || "mongodb://localhost/workout",{useNewUrlParser: true}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
