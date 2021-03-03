@@ -19,11 +19,12 @@ module.exports = function(app) {
   });
 
 
-  app.put("/api/workouts:id", function(req, res) {
-    db.Workout.updateOne({
-      text: req.body.text,
-      complete: req.body.complete
-    }, {
+  app.put("/api/workouts/:id", function(req, res) {
+    db.Workout.updateOne(
+      {_id: req.params.id },
+      {text: req.body.text },
+      {complete: req.body.complete},
+    {
       where: {
         id: req.body.id
       }
@@ -33,5 +34,3 @@ module.exports = function(app) {
   });
 
 };
-
-// find id 
